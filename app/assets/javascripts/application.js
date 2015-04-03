@@ -15,5 +15,6 @@
 //= require twitter/bootstrap
 //= require react
 //= require react_ujs
+//= require react-router
 //= require components
 //= require_tree .

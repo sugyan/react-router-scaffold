@@ -46,3 +46,7 @@ gem 'twitter-bootstrap-rails', '~> 3.2.0'
 
 # React
 gem 'react-rails', github: 'reactjs/react-rails'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-react-router'
+end

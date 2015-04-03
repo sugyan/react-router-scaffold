@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/reactjs/react-rails.git
-  revision: 2731a716f4395b7e51df60d42dfb3bd162688836
+  revision: a8f8d83a7106fcbe27ba4a7acfc982c3712920a3
   specs:
     react-rails (1.0.0.pre)
       coffee-script-source (~> 1.8)
@@ -11,6 +11,7 @@ GIT
 
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.1)
       actionpack (= 4.2.1)
@@ -51,7 +52,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
-    byebug (4.0.4)
+    byebug (4.0.5)
       columnize (= 0.9.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -102,6 +103,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.1)
       sprockets-rails
+    rails-assets-react-router (0.13.2)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.6)
@@ -167,6 +169,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 4.2.1)
+  rails-assets-react-router!
   react-rails!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

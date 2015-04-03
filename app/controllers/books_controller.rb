@@ -10,15 +10,18 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    render :index
   end
 
   # GET /books/new
   def new
     @book = Book.new
+    render :index
   end
 
   # GET /books/1/edit
   def edit
+    render :index
   end
 
   # POST /books
