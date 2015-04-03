@@ -16,19 +16,20 @@ class BookForm extends React.Component {
         });
     }
     render() {
+        var book = this.props.book;
         return (
             <div>
                 <form className="form-horizontal" onSubmit={this.handleSubmit.bind(this)}>
                     <div className="form-group">
                         <label className="col-sm-2 control-label">Title</label>
                         <div className="col-sm-10">
-                            <input ref="title" className="form-control"/>
+                            <input ref="title" className="form-control" defaultValue={book ? book.title : null}/>
                         </div>
                     </div>
                     <div className="form-group">
                         <label className="col-sm-2 control-label">Price</label>
                         <div className="col-sm-10">
-                            <input ref="price" className="form-control" type="number"/>
+                            <input ref="price" className="form-control" defaultValue={book ? book.price : null} type="number"/>
                         </div>
                     </div>
                     <div className="form-group">

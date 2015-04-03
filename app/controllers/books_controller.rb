@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:update, :destroy]
 
   # GET /books
   # GET /books.json
@@ -10,7 +10,10 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
-    render :index
+    respond_to do |format|
+      format.html { render :index }
+      format.json { set_book }
+    end
   end
 
   # GET /books/new
@@ -45,10 +48,8 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-        format.json { render :show, status: :ok, location: @book }
+        format.json { render :show, status: :ok, location: @book, notice: 'Book was successfully updated.' }
       else
-        format.html { render :edit }
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end
