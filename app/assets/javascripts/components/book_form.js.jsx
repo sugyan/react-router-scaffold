@@ -1,4 +1,9 @@
 class BookForm extends React.Component {
+    constructor() {
+        this.state = {
+            alerts: []
+        };
+    }
     handleSubmit(e) {
         e.preventDefault();
 
@@ -11,14 +16,28 @@ class BookForm extends React.Component {
             method: this.props.method,
             data: { book: params },
             success: (result) => {
-                this.context.router.transitionTo('index');
+                this.context.router.transitionTo(result.location);
+            },
+            error: (jqXHR) => {
+                this.setState({
+                    alerts: jqXHR.responseJSON
+                });
             }
         });
     }
     render() {
         var book = this.props.book;
+        var alerts;
+        if (this.state.alerts.length > 0) {
+            alerts = (
+                <div className="alert alert-danger">
+                    <ul>{this.state.alerts.map((e, i) => <li key={i}>{e}</li>)}</ul>
+                </div>
+            );
+        }
         return (
             <div>
+                {alerts}
                 <form className="form-horizontal" onSubmit={this.handleSubmit.bind(this)}>
                     <div className="form-group">
                         <label className="col-sm-2 control-label">Title</label>
@@ -29,7 +48,7 @@ class BookForm extends React.Component {
                     <div className="form-group">
                         <label className="col-sm-2 control-label">Price</label>
                         <div className="col-sm-10">
-                            <input ref="price" className="form-control" defaultValue={book ? book.price : null} type="number"/>
+                            <input ref="price" className="form-control" defaultValue={book ? book.price : null}/>
                         </div>
                     </div>
                     <div className="form-group">

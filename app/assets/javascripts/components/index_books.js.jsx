@@ -12,6 +12,19 @@ class IndexBooks extends React.Component {
             }
         });
     }
+    handleClickDestroy(url, e) {
+        e.preventDefault();
+        if (! confirm('Are you sure?')) {
+            return;
+        }
+        $.ajax({
+            url: url,
+            method: 'DELETE',
+            success: (result) => {
+                console.log(result.notice);
+            }
+        })
+    }
     render() {
         var rows = this.state.books.map((book, i) => {
             return (
@@ -21,7 +34,7 @@ class IndexBooks extends React.Component {
                     <td>{book.price}</td>
                     <td><ReactRouter.Link to="show" params={{ id: book.id }}>Show</ReactRouter.Link></td>
                     <td><ReactRouter.Link to="edit" params={{ id: book.id }}>Edit</ReactRouter.Link></td>
-                    <td><a href="">Destroy</a></td>
+                    <td><a href="" onClick={this.handleClickDestroy.bind(this, book.url)}>Destroy</a></td>
                 </tr>
             );
         });

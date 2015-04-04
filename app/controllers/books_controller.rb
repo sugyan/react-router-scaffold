@@ -32,26 +32,20 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
 
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render :show, status: :created, location: @book }
-      else
-        format.html { render :new }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+    if @book.save
+      render json: { notice: 'Book was successfully created.', location: book_path(@book) }, status: :created
+    else
+      render json: @book.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
-    respond_to do |format|
-      if @book.update(book_params)
-        format.json { render :show, status: :ok, location: @book, notice: 'Book was successfully updated.' }
-      else
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+    if @book.update(book_params)
+      render json: { notice: 'Book was successfully updated.', location: book_path(@book) }, status: :ok
+    else
+      render json: @book.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -60,8 +54,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
-      format.json { head :no_content }
+      format.json { render json: { notice: 'Book was successfully destroyed.' } }
     end
   end
 
