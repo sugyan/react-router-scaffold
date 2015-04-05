@@ -1,12 +1,12 @@
-class NewBook extends React.Component {
+class BookNew extends React.Component {
     render() {
         return (
             <div>
                 <h1>New Book</h1>
-                <BookForm action={this.context.router.makePath('index')} method="POST"/>
+                <BookForm action={this.context.router.makePath('index')} method="POST" submit="Create"/>
                 <ReactRouter.Link to="index" className="btn btn-link">Back</ReactRouter.Link>
             </div>
         );
     }
 }
-NewBook.contextTypes = { router: React.PropTypes.func };
+BookNew.contextTypes = { router: React.PropTypes.func };

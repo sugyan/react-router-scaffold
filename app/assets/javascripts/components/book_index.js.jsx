@@ -1,4 +1,4 @@
-class IndexBooks extends React.Component {
+class BookIndex extends React.Component {
     constructor() {
         this.state = {
             books: []
@@ -55,9 +55,9 @@ class IndexBooks extends React.Component {
                     </tbody>
                 </table>
                 <br/>
-                <ReactRouter.Link to="new" className="btn btn-default">New Book</ReactRouter.Link>
+                <ReactRouter.Link to="new" className="btn btn-default">New</ReactRouter.Link>
             </div>
         );
     }
 }
-IndexBooks.contextTypes = { router: React.PropTypes.func };
+BookIndex.contextTypes = { router: React.PropTypes.func };

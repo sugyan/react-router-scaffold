@@ -53,7 +53,7 @@ class BookForm extends React.Component {
                     </div>
                     <div className="form-group">
                         <div className="col-sm-offset-2 col-sm-10">
-                            <button className="btn btn-primary">Create Book</button>
+                            <button className="btn btn-primary">{this.props.submit}</button>
                         </div>
                     </div>
                 </form>

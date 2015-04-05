@@ -1,4 +1,4 @@
-class ShowBook extends React.Component {
+class BookShow extends React.Component {
     constructor() {
         this.state = {
             book: {}
@@ -35,4 +35,4 @@ class ShowBook extends React.Component {
         );
     }
 }
-ShowBook.contextTypes = { router: React.PropTypes.func };
+BookShow.contextTypes = { router: React.PropTypes.func };

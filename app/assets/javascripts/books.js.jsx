@@ -13,10 +13,10 @@ class Books extends React.Component {
 $(() => {
     var routes = (
         <ReactRouter.Route path="/books/?" handler={Books}>
-          <ReactRouter.DefaultRoute name="index" handler={IndexBooks}/>
-          <ReactRouter.Route name="new" handler={NewBook}/>
-          <ReactRouter.Route name="show" path="/books/:id" handler={ShowBook}/>
-          <ReactRouter.Route name="edit" path="/books/:id/edit" handler={EditBook}/>
+          <ReactRouter.DefaultRoute name="index" handler={BookIndex}/>
+          <ReactRouter.Route name="new" handler={BookNew}/>
+          <ReactRouter.Route name="show" path="/books/:id" handler={BookShow}/>
+          <ReactRouter.Route name="edit" path="/books/:id/edit" handler={BookEdit}/>
         </ReactRouter.Route>
     );
     ReactRouter.run(routes, ReactRouter.HistoryLocation, (Handler) => {

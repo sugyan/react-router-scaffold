@@ -1,4 +1,4 @@
-class EditBook extends React.Component {
+class BookEdit extends React.Component {
     constructor() {
         this.state = {};
     }
@@ -15,7 +15,7 @@ class EditBook extends React.Component {
     render() {
         var form;
         if (this.state.book) {
-            form = <BookForm action={this.context.router.makePath('show', { id: this.context.router.getCurrentParams().id })} method="PATCH" book={this.state.book}/>;
+            form = <BookForm action={this.context.router.makePath('show', { id: this.context.router.getCurrentParams().id })} method="PATCH" submit="Update" book={this.state.book}/>;
         }
         return (
             <div>
@@ -27,4 +27,4 @@ class EditBook extends React.Component {
         );
     }
 }
-EditBook.contextTypes = { router: React.PropTypes.func };
+BookEdit.contextTypes = { router: React.PropTypes.func };
