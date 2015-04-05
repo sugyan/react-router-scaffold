@@ -5,9 +5,8 @@ class BookShow extends React.Component {
         };
     }
     componentDidMount() {
-        var url = this.context.router.makePath('show', { id: this.context.router.getCurrentParams().id }) + ".json";
         $.ajax({
-            url: url,
+            url: this.props.api.show,
             method: 'GET',
             success: (result) => {
                 this.setState({ book: result });
@@ -29,10 +28,9 @@ class BookShow extends React.Component {
                     <dt>Updated</dt>
                     <dd>{this.state.book.updated_at}</dd>
                 </dl>
-                <ReactRouter.Link to="edit" params={{ id: this.context.router.getCurrentParams().id }} className="btn btn-link">Edit</ReactRouter.Link>
+                <ReactRouter.Link to="edit" params={{ id: this.props.params.id }} className="btn btn-link">Edit</ReactRouter.Link>
                 <ReactRouter.Link to="index" className="btn btn-link">Back</ReactRouter.Link>
             </div>
         );
     }
 }
-BookShow.contextTypes = { router: React.PropTypes.func };

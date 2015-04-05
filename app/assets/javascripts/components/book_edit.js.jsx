@@ -3,9 +3,8 @@ class BookEdit extends React.Component {
         this.state = {};
     }
     componentDidMount() {
-        var url = this.context.router.makePath('show', { id: this.context.router.getCurrentParams().id }) + ".json";
         $.ajax({
-            url: url,
+            url: this.props.api.show,
             method: 'GET',
             success: (result) => {
                 this.setState({ book: result });
@@ -15,16 +14,15 @@ class BookEdit extends React.Component {
     render() {
         var form;
         if (this.state.book) {
-            form = <BookForm action={this.context.router.makePath('show', { id: this.context.router.getCurrentParams().id })} method="PATCH" submit="Update" book={this.state.book}/>;
+            form = <BookForm action={this.props.api.show} method="PATCH" submit="Update" book={this.state.book}/>;
         }
         return (
             <div>
                 <h1>Editing Book</h1>
                 {form}
-                <ReactRouter.Link to="show" params={{ id: this.context.router.getCurrentParams().id }} className="btn btn-link">Show</ReactRouter.Link>
+                <ReactRouter.Link to="show" params={{ id: this.props.params.id }} className="btn btn-link">Show</ReactRouter.Link>
                 <ReactRouter.Link to="index" className="btn btn-link">Back</ReactRouter.Link>
             </div>
         );
     }
 }
-BookEdit.contextTypes = { router: React.PropTypes.func };
