@@ -1,14 +1,42 @@
 class Books extends React.Component {
+    constructor() {
+        this.state = {
+            flash: null,
+            flashShown: false
+        };
+    }
+    updateFlash(message) {
+        this.setState({
+            flash: message,
+            flashShown: false
+        });
+    }
+    handleClickAlertClose(e) {
+        this.setState({ flash: null });
+    }
+    componentWillReceiveProps(props) {
+        if (this.state.flashShown) {
+            this.setState({ flash: null });
+        } else {
+            this.setState({ flashShown: true });
+        }
+    }
     render() {
-        var flash = null;
-        var api = { index: '/books.json' };
-        if (this.props.params.id) {
-            api.show = `/books/${this.props.params.id}.json`;
+        var flash;
+        if (this.state.flash) {
+            flash = (
+                <div className="alert alert-success">
+                    <button type="button" className="close">
+                        <span onClick={this.handleClickAlertClose.bind(this)}>&times;</span>
+                    </button>
+                    {this.state.flash}
+                </div>
+            );
         }
         return (
             <div>
                 {flash}
-                <ReactRouter.RouteHandler params={this.props.params} api={api}/>
+                <ReactRouter.RouteHandler params={this.props.params} updateFlash={this.updateFlash.bind(this)}/>
             </div>
         );
     }

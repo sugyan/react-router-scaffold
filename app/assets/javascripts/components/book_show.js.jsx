@@ -6,7 +6,7 @@ class BookShow extends React.Component {
     }
     componentDidMount() {
         $.ajax({
-            url: this.props.api.show,
+            url: `/books/${this.props.params.id}.json`,
             method: 'GET',
             success: (result) => {
                 this.setState({ book: result });

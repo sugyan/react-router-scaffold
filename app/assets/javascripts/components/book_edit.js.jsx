@@ -4,7 +4,7 @@ class BookEdit extends React.Component {
     }
     componentDidMount() {
         $.ajax({
-            url: this.props.api.show,
+            url: `/books/${this.props.params.id}.json`,
             method: 'GET',
             success: (result) => {
                 this.setState({ book: result });
@@ -14,7 +14,7 @@ class BookEdit extends React.Component {
     render() {
         var form;
         if (this.state.book) {
-            form = <BookForm action={this.props.api.show} method="PATCH" submit="Update" book={this.state.book}/>;
+            form = <BookForm action={`/books/${this.props.params.id}.json`} method="PATCH" submit="Update" updateFlash={this.props.updateFlash} book={this.state.book}/>;
         }
         return (
             <div>

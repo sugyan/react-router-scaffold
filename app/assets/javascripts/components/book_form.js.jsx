@@ -16,6 +16,7 @@ class BookForm extends React.Component {
             method: this.props.method,
             data: { book: params },
             success: (result) => {
+                this.props.updateFlash(result.notice);
                 this.context.router.transitionTo(result.location);
             },
             error: (jqXHR) => {
