@@ -26,5 +26,6 @@ module ReactRouterScaffold
 
     # React
     config.react.jsx_transform_options = { harmony: true }
+    config.react.addons = true
   end
 end

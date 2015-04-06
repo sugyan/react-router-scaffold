@@ -43,10 +43,12 @@ end
 
 # Twitter Bootstrap
 gem 'twitter-bootstrap-rails', '~> 3.2.0'
-
 # React
 gem 'react-rails', github: 'reactjs/react-rails'
+# Pagination
+gem 'kaminari', '~> 0.16.3'
 
 source 'https://rails-assets.org' do
+  # React Router
   gem 'rails-assets-react-router'
 end

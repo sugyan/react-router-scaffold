@@ -1,16 +1,24 @@
 class BookIndex extends React.Component {
     constructor() {
         this.state = {
-            books: []
+            books: [],
+            pagination: {}
         };
     }
-    reloadBooks() {
+    reloadBooks(query) {
         $.ajax({
             url: '/books.json',
-            success: (results) => {
-                this.setState({ books: results });
+            data: query || this.props.query,
+            success: (result) => {
+                this.setState({
+                    books: result.books,
+                    pagination: result.pagination
+                });
             }
         });
+    }
+    componentWillReceiveProps(nextProps) {
+        this.reloadBooks(nextProps.query)
     }
     componentDidMount() {
         this.reloadBooks();
@@ -20,6 +28,7 @@ class BookIndex extends React.Component {
             <div>
                 <h1>Listing Books</h1>
                 <BookIndexTable books={this.state.books} updateFlash={this.props.updateFlash} reloadBooks={this.reloadBooks.bind(this)}/>
+                <Pagination {...this.state.pagination}/>
                 <br/>
                 <ReactRouter.Link to="new" className="btn btn-default">New</ReactRouter.Link>
             </div>

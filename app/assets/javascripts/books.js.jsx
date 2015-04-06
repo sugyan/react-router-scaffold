@@ -14,7 +14,7 @@ class Books extends React.Component {
     handleClickAlertClose(e) {
         this.setState({ flash: null });
     }
-    componentWillReceiveProps(props) {
+    componentWillReceiveProps(nextProps) {
         if (this.state.flashShown) {
             this.setState({ flash: null });
         } else {
@@ -36,7 +36,7 @@ class Books extends React.Component {
         return (
             <div>
                 {flash}
-                <ReactRouter.RouteHandler params={this.props.params} updateFlash={this.updateFlash.bind(this)}/>
+                <ReactRouter.RouteHandler params={this.props.params} query={this.props.query} updateFlash={this.updateFlash.bind(this)}/>
             </div>
         );
     }
