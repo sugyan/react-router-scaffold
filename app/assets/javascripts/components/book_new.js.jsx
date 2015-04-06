@@ -3,7 +3,7 @@ class BookNew extends React.Component {
         return (
             <div>
                 <h1>New Book</h1>
-                <BookForm action={this.props.api.index} method="POST" submit="Create"/>
+                <BookForm action="/books.json" method="POST" submit="Create" updateFlash={this.props.updateFlash}/>
                 <ReactRouter.Link to="index" className="btn btn-link">Back</ReactRouter.Link>
             </div>
         );

@@ -4,19 +4,22 @@ class BookIndex extends React.Component {
             books: []
         };
     }
-    componentDidMount() {
+    reloadBooks() {
         $.ajax({
-            url: this.props.api.index,
+            url: '/books.json',
             success: (results) => {
                 this.setState({ books: results });
             }
         });
     }
+    componentDidMount() {
+        this.reloadBooks();
+    }
     render() {
         return (
             <div>
                 <h1>Listing Books</h1>
-                <BookIndexTable books={this.state.books}/>
+                <BookIndexTable books={this.state.books} updateFlash={this.props.updateFlash} reloadBooks={this.reloadBooks.bind(this)}/>
                 <br/>
                 <ReactRouter.Link to="new" className="btn btn-default">New</ReactRouter.Link>
             </div>
@@ -37,7 +40,7 @@ class BookIndexTable extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.books.map((book, i) => <BookIndexTableRow key={i} book={book}/>)}
+                    {this.props.books.map((book, i) => <BookIndexTableRow key={i} book={book} updateFlash={this.props.updateFlash} reloadBooks={this.props.reloadBooks}/>)}
                 </tbody>
             </table>
         );
@@ -54,7 +57,8 @@ class BookIndexTableRow extends React.Component {
             url: url,
             method: 'DELETE',
             success: (result) => {
-                console.log(result.notice);
+                this.props.updateFlash(result.notice);
+                this.props.reloadBooks();
             }
         })
     }
