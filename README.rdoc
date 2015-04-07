@@ -1,7 +1,7 @@
 == README
 
-Single page Rails scaffold by react and react-router.
+rails scaffold app by {react}[http://facebook.github.io/react/] and {react-router}[https://github.com/rackt/react-router].
 
-=== Heroku
+https://react-router-scaffold.herokuapp.com/books/
 
 {<img src="https://www.herokucdn.com/deploy/button.png">}[https://heroku.com/deploy]
