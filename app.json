@@ -1,0 +1,17 @@
+{
+    "name": "react-router-scaffold",
+    "description": "",
+    "keywords": [
+        "rails",
+        "react",
+        "react-router"
+    ],
+    "repository": "https://github.com/sugyan/react-router-scaffold",
+    "addons": [],
+    "scripts": {
+        "postdeploy": "bundle exec rake db:migrate"
+    },
+    "env": {
+        "MAX_THREADS": "1"
+    }
+}

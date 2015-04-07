@@ -1,0 +1,7 @@
+== README
+
+Single page Rails scaffold by react and react-router.
+
+=== Heroku
+
+{<img src="https://www.herokucdn.com/deploy/button.png">}[https://heroku.com/deploy]
