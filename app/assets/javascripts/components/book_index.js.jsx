@@ -24,9 +24,14 @@ class BookIndex extends React.Component {
         this.reloadBooks();
     }
     render() {
+        var info;
+        if (this.state.pagination.total_count) {
+            info = <p>{this.state.pagination.offset_value + 1} - {this.state.pagination.offset_value + this.state.books.length} of {this.state.pagination.total_count}</p>;
+        }
         return (
             <div>
                 <h1>Listing Books</h1>
+                {info}
                 <BookIndexTable books={this.state.books} updateFlash={this.props.updateFlash} reloadBooks={this.reloadBooks.bind(this)}/>
                 <Pagination {...this.state.pagination}/>
                 <br/>
