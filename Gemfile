@@ -44,7 +44,7 @@ end
 # Twitter Bootstrap
 gem 'twitter-bootstrap-rails', '~> 3.2.0'
 # React
-gem 'react-rails', github: 'reactjs/react-rails'
+gem 'react-rails', '~> 1.0'
 # Pagination
 gem 'kaminari', '~> 0.16.3'
 
